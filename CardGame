@@ -1,0 +1,52 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+Suite = np.array(["S","D","H","C"], dtype=np.string)
+This is a card game
+"""
+import numpy as np
+import random
+
+i = 52
+a, b = 4, 13
+#Deck = [[0 for x in range(b)] for y in range(a)]
+Deck = []
+
+
+
+print("Let's play!")
+print()
+
+Suite = ["Spades","Diamonds","Hearts","Clubs"]
+Value = np.array([1,2,3,4,5,6,7,8,9,10,"Jack","Queen","King"])
+
+class Card:
+    def __init__(self, suite, value):
+        self.suite = suite
+        self.value = value
+        
+#make deck
+for x in Suite:
+    for y in Value:
+        Deck.append(Card(x,y))
+
+#shuffle
+random.shuffle(Deck)
+#Function to deal in a player
+def AddPlayer():
+    a = []
+    for x in range(3):
+        a.append(Deck.pop(random.randint(0,i)))
+    return a
+    
+#Make a player    
+Player1 = AddPlayer()
+Player2 = AddPlayer()
+Player3 = AddPlayer()
+
+#Print the hand 
+print("This is your hand:")
+for card in Player1:
+    print(card.value, "of", card.suite)
+    
+print("Length of deck remaining: ",len(Deck))
